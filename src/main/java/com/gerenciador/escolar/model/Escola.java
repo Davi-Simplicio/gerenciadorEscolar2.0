@@ -23,7 +23,7 @@ public class Escola {
     private Set<Professor> professores;
     @OneToMany
     private Set<Curso> cursos;
-    @OneToOne(mappedBy = "diretor")
+    @OneToOne(mappedBy = "escola")
     private Diretor diretor;
 
 }

@@ -1,6 +1,7 @@
 package com.gerenciador.escolar.service;
 
 import com.gerenciador.escolar.model.Professor;
+import com.gerenciador.escolar.model.UsuarioIdClass;
 import com.gerenciador.escolar.repository.ProfessorRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,8 @@ import java.util.Optional;
 public class ProfessorService {
     private final ProfessorRepository professorRepository;
 
-    public Professor buscarUm(Long id) {
-        Optional<Professor> professorOptional = professorRepository.findById(id);
+    public Professor buscarUm(Long id,Long cpf) {
+        Optional<Professor> professorOptional = professorRepository.findById(new UsuarioIdClass(id,cpf));
         return professorOptional.get();
     }
 
@@ -22,8 +23,8 @@ public class ProfessorService {
         return professorRepository.findAll();
     }
 
-    public void deletar(Long id) {
-        professorRepository.deleteById(id);
+    public void deletar(Long id,Long cpf) {
+        professorRepository.deleteById(new UsuarioIdClass(id,cpf));
     }
 
     public void salvar(Professor professor) {

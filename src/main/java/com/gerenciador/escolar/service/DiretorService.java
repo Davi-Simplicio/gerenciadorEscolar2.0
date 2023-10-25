@@ -1,6 +1,7 @@
 package com.gerenciador.escolar.service;
 
 import com.gerenciador.escolar.model.Diretor;
+import com.gerenciador.escolar.model.UsuarioIdClass;
 import com.gerenciador.escolar.repository.DiretorRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,8 @@ public class DiretorService {
     private final DiretorRepository diretorRepository;
 
 
-    public Diretor buscarUm(Long id) {
-        Optional<Diretor> secretarioOptional = diretorRepository.findById(id);
+    public Diretor buscarUm(Long id,Long cpf) {
+        Optional<Diretor> secretarioOptional = diretorRepository.findById(new UsuarioIdClass(id,cpf));
         return secretarioOptional.get();
     }
 
@@ -23,8 +24,8 @@ public class DiretorService {
         return diretorRepository.findAll();
     }
 
-    public void deletar(Long id) {
-        diretorRepository.deleteById(id);
+    public void deletar(Long id,Long cpf) {
+        diretorRepository.deleteById(new UsuarioIdClass(id,cpf));
     }
 
     public void salvar(Diretor diretor) {

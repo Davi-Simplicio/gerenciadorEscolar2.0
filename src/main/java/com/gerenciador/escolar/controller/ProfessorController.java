@@ -13,9 +13,9 @@ import java.util.Collection;
 public class ProfessorController {
     private final ProfessorService professorService;
 
-    @GetMapping("/{id}")
-    public Professor buscarUm(@PathVariable Long id) {
-        return professorService.buscarUm(id);
+    @GetMapping("/{id}/{cpf}")
+    public Professor buscarUm(@PathVariable Long id, @PathVariable Long cpf) {
+        return professorService.buscarUm(id,cpf);
     }
 
     @GetMapping
@@ -23,9 +23,9 @@ public class ProfessorController {
         return professorService.buscarTodos();
     }
 
-    @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
-        professorService.deletar(id);
+    @DeleteMapping("/{id}/{cpf}")
+    public void deletar(@PathVariable Long id, @PathVariable Long cpf) {
+        professorService.deletar(id,cpf);
     }
 
     @PostMapping

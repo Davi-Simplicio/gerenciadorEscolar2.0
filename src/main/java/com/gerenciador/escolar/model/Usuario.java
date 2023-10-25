@@ -22,7 +22,7 @@ public class Usuario {
     private String nome;
     private String email;
     private String telefone;
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
 
 }
